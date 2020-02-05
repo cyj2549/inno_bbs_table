@@ -7,18 +7,20 @@
 <title>게시판 상세</title>
 <!--  처음에 입력창을 빈칸으로 하고싶다면  위에 홍길동이 입력되있는 칸을 공백으로 냅두면 된다. -->
 <!--  var returnValue = prompt("Prompt", ""); -->
-<script type="text/javascript">
-	function pwdcheck() {
 
-		var pwdcheck = confirm("삭제하시겠습니까???");
-		if (pwdcheck== true) {  //확인을 누를경우
-			document.pwd_ck.action="pwd_check.jsp";
-			document.pwd_ck.submit();
-		} else {
-			history.go(-1);
-		}
-	}
+<script type="text/javascript">
+function pwdcheck(){
 	
+	var pwdch =prompt('비밀번호는?','비밀번호를 입력하세요');
+	
+	if(pwdck){
+		alert("비밀번호일치");
+	}else{
+		alert("삭제를 취소합니다.");
+		history.go(-1);
+	}
+}
+
 </script>
 </head>
 
@@ -26,9 +28,9 @@
 	<h3>게시판 상세</h3>
 	<form name="pwd_ck" method="post" >
 		<%
-			String boardnum = request.getParameter("boardnum");
-			String pwd = request.getParameter("pwd");
-		%>
+ 			String boardnum = request.getParameter("boardnum"); 
+ 			String pwd = request.getParameter("pwd"); 
+ 		%> 
 		<input type="hidden" name="boardnum" value="<%=boardnum%>"> 
 		<input type="hidden" name="pwd" value="<%=pwd%>">
 	</form>
@@ -94,4 +96,19 @@
 
 
 
+
+
+<!-- <script type="text/javascript"> -->
+<!-- // 	function pwdcheck() { -->
+
+<!-- // 		var pwdcheck = confirm("삭제하시겠습니까???"); -->
+<!-- // 		if (pwdcheck== true) {  //확인을 누를경우 -->
+<!-- // 			document.pwd_ck.action="pwd_check.jsp"; -->
+<!-- // 			document.pwd_ck.submit(); -->
+<!-- // 		} else { -->
+<!-- // 			history.go(-1); -->
+<!-- // 		} -->
+<!-- // 	} -->
+	
+<!-- </script> -->
 

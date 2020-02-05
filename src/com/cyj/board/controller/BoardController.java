@@ -217,8 +217,8 @@ public class BoardController extends HttpServlet {
 		if(boarddel_all==1) {  //1 성공
 			response.sendRedirect("/CYJ_BBS_board/jsp/board/lst.do");
 		}
-		else { // 0 실패
-			response.sendRedirect("/CYJ_BBS_board/jsp/board/pwd_check.jsp");
+		else { // 0 비밀번호 불일치
+			response.sendRedirect("/CYJ_BBS_board/jsp/board/pwd_fail.jsp");
 		}
 		
 	}
