@@ -1,0 +1,176 @@
+DROP TABLE BBS;
+DROP SERIAL SEQ_boardnum;
+
+CREATE TABLE BBS(
+boardnum INT(11) PRIMARY KEY, -- 글번호
+notice CHAR(1) DEFAULT 'N'   ,   -- 공지사항 유무(Y - 공지사항, N - 일반 게시물)
+title VARCHAR(70) NOT NULL, -- 제목
+username VARCHAR(11) NOT NULL, -- 작성자
+content VARCHAR(4000) NOT NULL, -- 내용
+hit INT NOT NULL DEFAULT 0, -- 조회수
+UPDDATE TIMESTAMP NOT NULL DEFAULT SYS_DATETIME, -- 수정날짜
+REGDATE TIMESTAMP NOT NULL DEFAULT SYS_DATETIME, -- 작성날짜
+deletee CHAR(1) NOT NULL DEFAULT 'N'-- 삭제유무  Y삭제, N삭제안함 
+);
+
+CREATE SERIAL seq_boardnum START WITH 100 INCREMENT BY 1;
+
+
+SELECT TO_CHAR(upddate, 'YYYY-MM-DD HH24:MI') AS tocharr , upddate FROM BBS; 
+
+SELECT TO_CHAR(upddate, 'YYYY-MM-DD') AS tocharr , upddate FROM BBS;
+
+
+SELECT * FROM BBS;
+DESC BBS;
+
+SELECT COUNT(*) FROM BBS;
+
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE, 'N', '으으으으ㅡㅇㅇ', '강민정', 'ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ', 0 , NOW(), NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE, 'N', '국어', '이하늘',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,  'Y', '수학1', '111',  'ㅇSSSSㅇㅇㅇ',  0,   NOW(),    NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '과학',  '이하ㄷㅈㄱㄷ늘',  'ㅇㅇㅇㅇ', 0,NOW(), NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'Y', '영어', '이하늘',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '미술', '24ㄱㄹ',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '음악ㄱ', 'ㄷㅈㄱㅈ',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'Y', '555', 'ㄷㅈㄱㅈㄷㄱㅈㄷ',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '수정수정2', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'Y', '수정수정1', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '수정수정3', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '제목30자링ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'Y', 'ㅂㅂㅂㅂㅂㅂㅂ', 'ㄷㅈㄱㅈㄷㄱㅈㄷ',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', 'ㅈㅈㅈㅈㅈㅈㅈ', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'Y', 'ㄷㄷㄷㄷㄷ', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', 'ㄱㄱㄱㄱㄱㄱㄱ', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'Y', '11111', 'ㄷㅈㄱㅈㄷㄱㅈㄷ',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '22222', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'Y', '33333', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '44444', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '44444', '수정수정수정',  '내용보이나',0,NOW(),NOW(),'N');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '44444', '수정수정수정',  'ㅇㅇㅇㅇ',0,NOW(),NOW(),'Y');
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '44444', '수정수정수정',  '내용보이나',0,NOW(),NOW(),'Y');
+
+INSERT INTO BBS VALUES (seq_boardnum.NEXT_VALUE,'N', '뭐지이건11', '뭐지이건11',  '뭐지이건',0,NOW(),NOW(),'Y');
+
+
+        SELECT ROWNUM, B.* FROM(
+        	SELECT A.* FROM(
+        		SELECT  ROWNUM AS rn, boardnum,notice,title,username,content,hit,upddate,
+        TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI') AS regdate, deletee
+        FROM BBS WHERE 1=1 AND deletee = 'N' ORDER BY regdate DESC )A
+        ORDER BY A.rn DESC)B WHERE ROWNUM BETWEEN 1 AND 10;
+
+
+        SELECT ROWNUM, B.* FROM(
+        	SELECT A.* FROM(
+        		SELECT  ROWNUM AS rn, boardnum,notice,title,username,content,hit,upddate,
+        TO_CHAR(regdate, 'YYYY-MM-DD HH24:MI') AS regdate, deletee
+        FROM BBS WHERE 1=1 AND deletee = 'N' ORDER BY regdate DESC )A
+        ORDER BY A.rn DESC)B WHERE ROWNUM BETWEEN 1 AND 10;
+
+    SELECT
+        ROWNUM,
+        B.* 
+    FROM
+        (SELECT
+            A.* 
+        FROM
+            (SELECT
+                ROWNUM AS rn,
+                boardnum,
+                notice,
+                title,
+                username,
+                content,
+                hit,
+                upddate,
+                TO_CHAR(regdate,
+                'YYYY-MM-DD HH24:MI') AS regdate,
+                deletee 
+            FROM
+                BBS 
+            WHERE
+                1=1  
+                AND deletee = 'N'  
+            ORDER BY
+                boardnum DESC)A 
+   )B 
+        WHERE
+            rn BETWEEN 1 AND 15;
+
+
+
+SELECT * FROM BBS;
+
+    SELECT
+        * 
+    FROM
+        (                 SELECT
+            ROWNUM    AS   rn    ,count(*) over() AS cnt,
+            boardnum         ,
+            notice          ,
+            title                     ,
+            username                  ,
+            content                   ,
+            hit                       ,
+            upddate                   ,
+            TO_CHAR(regdate,
+            'YYYY-MM-DD HH24:MI') AS regdate 
+        FROM
+            BBS   )    
+    ORDER BY
+        rn DESC   ;
+        
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+  SELECT
+        ROWNUM,
+        B.* 
+    FROM
+        (SELECT
+            A.* 
+        FROM
+            (SELECT
+                ROWNUM AS rn,
+                boardnum,
+                notice,
+                title,
+                username,
+                content,
+                hit,
+                upddate,
+                TO_CHAR(regdate,
+                'YYYY-MM-DD HH24:MI') AS regdate,
+                deletee 
+            FROM
+                BBS 
+            WHERE
+                1=1  
+                AND deletee = 'N'  
+            ORDER BY
+                regdate DESC)A 
+        ORDER BY
+            A.rn DESC)B 
+        WHERE
+            ROWNUM BETWEEN 1 AND 15;
+
+
+
+
+
+
+
+
+
+SELECT SYSDATETIME
