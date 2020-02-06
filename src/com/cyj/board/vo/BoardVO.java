@@ -158,6 +158,14 @@ public class BoardVO {
 		this.regdate = regdate;
 	}
 	
+	@Override
+	public String toString() {
+		return "BoardVO [notice=" + notice + ", username=" + username + ", title=" + title + ", content=" + content
+				+ ", pwd=" + pwd + "]";
+	}
+	
+	
+	
 
 	
 }

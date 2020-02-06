@@ -6,10 +6,43 @@
 	BoardVO boardsel = (BoardVO) request.getAttribute("boardsel");
 %>
 <html>
+<head>
+<title>글 수정</title>
+<script type="text/javascript">
+
+function checkValue(){
+	
+	if(!document.boardupdate.username.value){
+		alert("작성자를 입력하세요");
+		return false;
+	}
+	if(!document.boardupdate.pwd.value){
+		alert("비밀번호를 입력하세요");
+		return false;
+	}
+	if(!document.boardupdate.title.value){
+		alert("제목을 입력해주세요");
+		return false;
+	}
+	if(!document.boardupdate.content.value){
+		alert("내용을 입력해주세요");
+		return false;
+	}
+}
+
+
+</script>
+
+
+
+</head>
+
+
+
 <body>
 
 	<form name="boardupdate" action="/CYJ_BBS_board/jsp/board/upd.do"
-		method="post">
+		method="post" onsubmit="return checkValue()" >
 		<input type="hidden" name="boardnum" value="<%=boardsel.getBoardnum()%>" />
 
 		<h2>게시판 수정</h2>
@@ -46,7 +79,7 @@
 		<button type="submit">수정</button>
 		<!-- <input type="submit" value="수정글 등록"> -->
 
-		<a href="javascript:history.back(-1)">뒤로가기</A>
+		<a href="javascript:history.back(-1)">뒤로가기</a>
 	</form>
 
 </body>

@@ -11,10 +11,11 @@
 <script type="text/javascript">
 function pwdcheck(){
 	
-	var pwdch =prompt('비밀번호는?','비밀번호를 입력하세요');
+	var pwdck =prompt('비밀번호는?','비밀번호를 입력하세요');
 	
-	if(pwdck){
-		alert("비밀번호일치");
+	if(pwdck){			
+		alert("비밀번호 일치");
+		document.write(pwdck);
 	}else{
 		alert("삭제를 취소합니다.");
 		history.go(-1);
@@ -26,13 +27,16 @@ function pwdcheck(){
 
 <body>
 	<h3>게시판 상세</h3>
-	<form name="pwd_ck" method="post" >
+	<form action="" name="pwd_ck" method="post" onsubmit="return pwdcheck()" >
 		<%
  			String boardnum = request.getParameter("boardnum"); 
  			String pwd = request.getParameter("pwd"); 
+ 			
+ 			System.out.println(pwd+" aaaaaaaaaaaaaaaaa");
  		%> 
 		<input type="hidden" name="boardnum" value="<%=boardnum%>"> 
 		<input type="hidden" name="pwd" value="<%=pwd%>">
+		<input type="submit" value="삭제" />
 	</form>
 
 	<table border="1">
@@ -80,12 +84,20 @@ function pwdcheck(){
 		// BoardVO
 	%>
 	<a href="lst.do">목록으로 가기</a>
-	<a
-		href="sel.do?se=UU&boardnum=<%=boardsel.getBoardnum()%>&rn=<%=boardsel.getRownum()%>">수정하기</a>
+	<a href="sel.do?se=UU&boardnum=<%=boardsel.getBoardnum()%>&rn=<%=boardsel.getRownum()%>">수정하기</a>
 
-		<a href="del.do?boardnum=<%=boardsel.getBoardnum()%>" onclick="pwdcheck">삭제</a>
+<!-- 	<a onclick=pwdcheck()>삭제</a> -->       
+<!-- 		<a href="javascript:pwdcheck()">삭제</a> -->
 </body>
 </html>
+
+<!-- 1번째 방법   <a href="javascript:pwdcheck()">삭제</a>
+     2번째 방법   <a onclick=pwdcheck()>삭제</a>
+         둘다 됨 
+        -->
+
+
+
 
 <!-- 목록_get -->
 <!-- 상세_get  -->
